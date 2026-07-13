@@ -16,8 +16,8 @@ public class SkeletonMain {
         /* Multiplayer Game */
         MultiplayerGameRunner gameRunner = new MultiplayerGameRunner();
         java.util.Properties params = new java.util.Properties();
-        params.setProperty("board_size", "9");
-        params.setProperty("swaps_allowed", "true");
+        params.setProperty("board_size", "6");
+        params.setProperty("swaps_allowed", "false");
         gameRunner.setGameParameters(params);
         gameRunner.addAgent(Boss2.class);
         gameRunner.addAgent(Boss2.class);

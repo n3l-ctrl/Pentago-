@@ -34,7 +34,9 @@ public class Referee extends AbstractReferee {
             int numPlayers = gameManager.getPlayerCount();
             int boardSize = 9;
             try {
-                boardSize = Integer.valueOf(gameManager.getGameParameters().getProperty("board_size", "9"));
+                if (gameManager.getGameParameters() != null) {
+                    boardSize = Integer.valueOf(gameManager.getGameParameters().getProperty("board_size", "9"));
+                }
             } catch (Throwable t) {
                 boardSize = 9;
             }
@@ -46,8 +48,7 @@ public class Referee extends AbstractReferee {
             
             drawBoard();
         } catch (Throwable t) {
-            t.printStackTrace();
-            graphicEntityModule.createText("INIT ERROR: " + t.toString())
+            graphicEntityModule.createText("INIT ERR: " + t.getMessage())
                     .setX(100).setY(100).setFontSize(40).setFillColor(0xff0000);
         }
     }
@@ -232,7 +233,9 @@ public class Referee extends AbstractReferee {
                 int y = Integer.parseInt(isNormal ? m.group(2) : mSwap.group(2));
                 boolean swapsAllowed = true;
                 try {
-                    swapsAllowed = Boolean.valueOf(gameManager.getGameParameters().getProperty("swaps_allowed", "true"));
+                    if (gameManager.getGameParameters() != null) {
+                        swapsAllowed = Boolean.valueOf(gameManager.getGameParameters().getProperty("swaps_allowed", "true"));
+                    }
                 } catch (Throwable t) {
                     swapsAllowed = true;
                 }

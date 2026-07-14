@@ -9,10 +9,7 @@
                 Be the first player to form a line of 5 of your marbles either horizontally, vertically, or diagonally.
             </p>
             <p>
-                <strong>Welcome to the final Arena!</strong> You are playing on a massive <strong>9x9 grid</strong> against an opponent.
-            </p>
-            <p>
-                A new game-changing mechanic has been introduced: <strong>SWAP</strong>. You can now physically exchange the positions of two adjacent 3x3 blocks instead of rotating a block!
+                <strong>Welcome to the new Arena!</strong> You are playing on a massive <strong>9x9 grid</strong> against an opponent.
             </p>
         </div>
     </div>
@@ -26,13 +23,11 @@
             <p>On your turn, you must perform exactly two actions:</p>
             <ol>
                 <li><strong>Place a marble</strong> on any empty space on the grid.</li>
-                <li><strong>Manipulate the board</strong> using ONE of the following methods:</li>
-                <ul>
-                    <li><strong>Rotate</strong> a 3x3 block 90 degrees either left or right.</li>
-                    <li><strong>Swap</strong> the physical positions of two adjacent 3x3 blocks (blocks sharing an edge).</li>
-                </ul>
+                <li><strong>Rotate</strong> a 3x3 block 90 degrees either left or right.</li>
             </ol>
-            <p>Blocks are numbered 0 to 8, from top-left to bottom-right.</p>
+            <p>Blocks are numbered 0 to 8, and coordinates x, y from 0 to 8 as shown below:</p>
+            <img src="coords_9x9.png" style="width: 100%; max-width: 500px; display: block; margin: 10px auto;" />
+            <p>If multiple players form a line of 5 simultaneously, it's a draw between those players.</p>
         </div>
     </div>
 
@@ -53,13 +48,10 @@
         <div class="blk">
             <div class="title">Output for one game turn</div>
             <div class="text">
-                <span class="statement-lineno">Option A (Rotate): </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
+                <span class="statement-lineno">A single line containing 4 space-separated values: </span>
+                <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
                 <br>
                 <var>dir</var> is <code>L</code> or <code>R</code>.
-                <br><br>
-                <span class="statement-lineno">Option B (Swap): </span> <var>x</var> <var>y</var> SWAP <var>b1</var> <var>b2</var>
-                <br>
-                <var>b1</var> and <var>b2</var> are the IDs of the two adjacent blocks you wish to swap.
             </div>
         </div>
     </div>

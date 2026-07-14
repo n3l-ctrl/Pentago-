@@ -14,7 +14,7 @@ public class UpdateStatements {
 "      </div>\n" +
 "      <div>\n" +
 "        Welcome to the <strong>Wood League</strong>! The game is simplified for you to learn the basics.<br>\n" +
-"        You play in a 1v1 duel on a 6x6 grid. Later leagues will unlock the massive 9x9 grid, up to 4 players, and a mind-bending SWAP mechanic!\n" +
+"        You play in a 1v1 duel on a 6x6 grid.\n" +
 "      </div>\n" +
 "    </div>\n" +
 "\n" +

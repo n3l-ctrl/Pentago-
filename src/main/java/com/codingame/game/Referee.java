@@ -452,10 +452,11 @@ public class Referee extends AbstractReferee {
                 glow.setAlpha(1);
                 graphicEntityModule.commitEntityState(1.0, glow);
 
-                // Update text to "WINNER"
+                // Update text to "WINNER" or "DRAW"
+                String endText = winners.isEmpty() ? "DRAW" : "WINNER";
                 Text actionText = playerActionTexts[pIdx];
                 graphicEntityModule.commitEntityState(0.8, actionText);
-                actionText.setText("WINNER")
+                actionText.setText(endText)
                     .setFillColor(0xffffff)
                     .setFontSize(50)
                     .setZIndex(104)

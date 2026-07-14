@@ -35,8 +35,16 @@ public class Referee extends AbstractReferee {
             int numPlayers = gameManager.getPlayerCount();
             int boardSize = 9;
             try {
-                if (gameManager.getGameParameters() != null) {
-                    boardSize = Integer.valueOf(gameManager.getGameParameters().getProperty("board_size", "9"));
+                int league = gameManager.getLeagueLevel();
+                if (league == 1) {
+                    boardSize = 6;
+                } else if (league > 1) {
+                    boardSize = 9;
+                } else {
+                    // Fallback to game parameters if league is 0 (local test)
+                    if (gameManager.getGameParameters() != null) {
+                        boardSize = Integer.valueOf(gameManager.getGameParameters().getProperty("board_size", "9"));
+                    }
                 }
             } catch (Throwable t) {
                 boardSize = 9;
@@ -240,11 +248,19 @@ public class Referee extends AbstractReferee {
                 int y = Integer.parseInt(isNormal ? m.group(2) : mSwap.group(2));
                 boolean swapsAllowed = true;
                 try {
-                    if (gameManager.getGameParameters() != null) {
-                        swapsAllowed = Boolean.valueOf(gameManager.getGameParameters().getProperty("swaps_allowed", "true"));
+                    int league = gameManager.getLeagueLevel();
+                    if (league == 3) {
+                        swapsAllowed = true;
+                    } else if (league > 0) {
+                        swapsAllowed = false;
+                    } else {
+                        // Fallback for local tests
+                        if (gameManager.getGameParameters() != null) {
+                            swapsAllowed = Boolean.valueOf(gameManager.getGameParameters().getProperty("swaps_allowed", "false"));
+                        }
                     }
                 } catch (Throwable t) {
-                    swapsAllowed = true;
+                    swapsAllowed = false;
                 }
                 
                 if (isSwap && !swapsAllowed) {

@@ -22,9 +22,13 @@ public class Referee extends AbstractReferee {
     private int currentPlayerIndex = 0;
     
     private Group[] blockGroups;
-    private int[] blockRotations;
     private Sprite[][] marbles;
+    private int[] blockRotations;
     private Text[] playerActionTexts;
+    
+    private final String[] MARBLE_IMAGES = {"red_marble.png", "blue_marble.png", "green_marble.png", "yellow_marble.png"};
+    private final String[] MARBLE_GLOW_IMAGES = {"red_marble_glow.png", "blue_marble_glow.png", "green_marble_glow.png", "yellow_marble_glow.png"};
+    private final int[] PLAYER_COLORS = {0xff4444, 0x4444ff, 0x44ff44, 0xffff44};
 
     @Override
     public void init() {
@@ -104,7 +108,7 @@ public class Referee extends AbstractReferee {
                     
                     // 3D Glass Marble Effect
                     Sprite marbleSprite = graphicEntityModule.createSprite()
-                            .setImage("red_marble.png")
+                            .setImage(MARBLE_IMAGES[0])
                             .setX(cx)
                             .setY(cy)
                             .setAnchor(0.5)
@@ -315,11 +319,7 @@ public class Referee extends AbstractReferee {
         
         Sprite marbleSprite = marbles[blockId][py * 3 + px];
         
-        if (playerIndex == 0) {
-            marbleSprite.setImage("red_marble.png");
-        } else {
-            marbleSprite.setImage("blue_marble.png");
-        }
+        marbleSprite.setImage(MARBLE_IMAGES[playerIndex % 4]);
         graphicEntityModule.commitEntityState(0.0, marbleSprite);
         
         marbleSprite.setAlpha(1);
@@ -417,7 +417,7 @@ public class Referee extends AbstractReferee {
                 winnerText = "DRAW!";
             } else if (winners.size() == 1) {
                 winnerText = gameManager.getPlayer(winners.get(0)).getNicknameToken() + " WINS!";
-                color = winners.get(0) == 0 ? 0xff4444 : 0x4444ff;
+                color = PLAYER_COLORS[winners.get(0) % 4];
             } else {
                 winnerText = "TIE BREAKER DRAW!";
             }
@@ -486,7 +486,7 @@ public class Referee extends AbstractReferee {
         double globalY = group.getY() + rotatedY;
         
         Sprite clone = graphicEntityModule.createSprite()
-            .setImage(playerIndex == 0 ? "red_marble_glow.png" : "blue_marble_glow.png")
+            .setImage(MARBLE_GLOW_IMAGES[playerIndex % 4])
             .setX((int) Math.round(globalX))
             .setY((int) Math.round(globalY))
             .setAnchor(0.5)

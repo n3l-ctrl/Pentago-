@@ -9,10 +9,14 @@ public class GenerateMarbles {
         int size = 256;
         generateMarble("red_marble.png", size, new Color(150, 0, 0), new Color(255, 120, 120), new Color(30, 0, 0), false, null);
         generateMarble("blue_marble.png", size, new Color(0, 0, 150), new Color(120, 120, 255), new Color(0, 0, 30), false, null);
+        generateMarble("green_marble.png", size, new Color(0, 150, 0), new Color(120, 255, 120), new Color(0, 30, 0), false, null);
+        generateMarble("yellow_marble.png", size, new Color(180, 150, 0), new Color(255, 255, 120), new Color(40, 30, 0), false, null);
         
         // Glowing versions
         generateMarble("red_marble_glow.png", size, new Color(220, 50, 50), new Color(255, 200, 200), new Color(100, 0, 0), true, new Color(255, 50, 50));
         generateMarble("blue_marble_glow.png", size, new Color(50, 50, 220), new Color(200, 200, 255), new Color(0, 0, 100), true, new Color(50, 200, 255));
+        generateMarble("green_marble_glow.png", size, new Color(50, 220, 50), new Color(200, 255, 200), new Color(0, 100, 0), true, new Color(50, 255, 50));
+        generateMarble("yellow_marble_glow.png", size, new Color(230, 200, 50), new Color(255, 255, 200), new Color(120, 100, 0), true, new Color(255, 230, 50));
     }
 
     static void generateMarble(String filename, int size, Color baseColor, Color highlight, Color shadow, boolean glow, Color glowColor) throws Exception {

@@ -28,9 +28,9 @@ public class Referee extends AbstractReferee {
     private Sprite[] playerAvatars;
     private Text[] playerNames;
     
-    private final String[] MARBLE_IMAGES = {"red_marble.png", "blue_marble.png", "yellow_marble.png", "green_marble.png"};
-    private final String[] MARBLE_GLOW_IMAGES = {"red_marble_glow.png", "blue_marble_glow.png", "yellow_marble_glow.png", "green_marble_glow.png"};
-    private final int[] PLAYER_COLORS = {0xff4444, 0x4444ff, 0xffff44, 0x44ff44};
+    private final String[] MARBLE_IMAGES = {"red_marble.png", "blue_marble.png", "orange_marble.png", "green_marble.png"};
+    private final String[] MARBLE_GLOW_IMAGES = {"red_marble_glow.png", "blue_marble_glow.png", "orange_marble_glow.png", "green_marble_glow.png"};
+    private final int[] PLAYER_COLORS = {0xff4444, 0x4444ff, 0xff8f16, 0x44ff44};
 
     @Override
     public void init() {

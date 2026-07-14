@@ -420,9 +420,15 @@ public class Referee extends AbstractReferee {
                 winnerText = "TIE BREAKER DRAW!";
             }
             
+            int blocksPerRow = board.getBlocksPerRow();
+            int boardSizePixels = blocksPerRow * 300 + (blocksPerRow - 1) * 10;
+            int bottomY = (1080 - boardSizePixels) / 2 + boardSizePixels;
+            int textY = bottomY + (1080 - bottomY) / 2;
+            int fontSize = blocksPerRow == 3 ? 80 : 120;
+            
             Text t = graphicEntityModule.createText(winnerText)
-                .setX(1920/2).setY(1080/2)
-                .setAnchor(0.5).setFontSize(120)
+                .setX(1920/2).setY(textY)
+                .setAnchor(0.5).setFontSize(fontSize)
                 .setFontFamily("SansSerif").setFontWeight(Text.FontWeight.BOLD)
                 .setFillColor(color)
                 .setAlpha(0).setZIndex(102);

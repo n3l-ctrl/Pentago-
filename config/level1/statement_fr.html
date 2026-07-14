@@ -1,0 +1,74 @@
+<div class="statement-body">
+    <div style="background-color: #2b2b2b; color: #f2f2f2; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+      <div style="font-size: 1.2em; margin-bottom: 10px;">
+        <strong>🏆 Ceci est un puzzle multi-ligues !</strong>
+      </div>
+      <div>
+        Bienvenue dans la <strong>Ligue Bois</strong> ! Le jeu est simplifié pour vous apprendre les bases.<br>
+        Vous jouez un duel 1v1 sur un plateau 6x6.
+      </div>
+    </div>
+
+    <div class="statement-section statement-goal">
+        <h1>
+            <span class="icon icon-goal">&nbsp;</span>
+            <span>Objectif</span>
+        </h1>
+        <div class="statement-goal-content">
+            <p>
+                Soyez le premier joueur à former un alignement de 5 billes horizontalement, verticalement ou diagonalement.<br>
+                Ce puzzle est basé sur le jeu de plateau officiel <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
+            </p>
+        </div>
+    </div>
+
+    <div class="statement-section statement-rules">
+        <h1>
+            <span class="icon icon-rules">&nbsp;</span>
+            <span>Règles</span>
+        </h1>
+        <div class="statement-rules-content">
+            <p>À votre tour, vous devez effectuer exactement deux actions :</p>
+            <ol>
+                <li><strong>Placer une bille</strong> sur un emplacement vide du plateau.</li>
+                <li><strong>Pivoter un bloc 3x3</strong> de 90 degrés vers la gauche ou vers la droite.</li>
+            </ol>
+            <p>Les blocs sont numérotés de <const>0</const> à <const>3</const>, et les coordonnées <var>x</var>, <var>y</var> vont de <const>0</const> à <const>5</const> comme illustré ci-dessous :</p>
+            <img src="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/config/level1/coords_6x6.png" style="width: 100%; max-width: 400px; display: block; margin: 10px auto;" />
+            <p><strong>Égalités :</strong> Si plusieurs joueurs forment une ligne de 5 simultanément, c'est un match nul entre ces joueurs. Si le plateau est totalement rempli sans aucun alignement de 5, la partie se termine par une égalité globale.</p>
+        </div>
+    </div>
+
+    <div class="statement-section statement-protocol">
+        <h1>
+            <span class="icon icon-protocol">&nbsp;</span>
+            <span>Entrées/Sorties du jeu</span>
+        </h1>
+        <div class="blk">
+            <div class="title">Entrées pour un tour de jeu</div>
+            <div class="text">
+                <p><span class="statement-lineno">Ligne 1 : </span><var>size</var>, la taille du plateau (<const>6</const>).</p>
+                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant l'état du plateau. Un <code>.</code> signifie vide. Un chiffre <const>0</const>-<const>1</const> représente la bille d'un joueur.</p>
+            </div>
+        </div>
+        <div class="blk">
+            <div class="title">Sortie pour un tour de jeu</div>
+            <div class="text">
+                <span class="statement-lineno">Une seule ligne contenant 4 valeurs séparées par des espaces : </span>
+                <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
+                <br>
+                <var>x</var>, <var>y</var> : Coordonnées où placer votre bille.
+                <br>
+                <var>block</var> : L'ID du bloc à pivoter (<const>0</const> à <const>3</const>).
+                <br>
+                <var>dir</var> : La direction de rotation (<action>L</action> pour gauche ou <action>R</action> pour droite).
+                <br><br>
+                <strong>Exemple :</strong> <code>2 1 0 R</code> (Place une bille en 2,1 et pivote le bloc 0 vers la droite)
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center; color: #888; font-size: 0.9em;">
+        Pour comprendre les mécaniques en détail, vous pouvez consulter le <a href="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/src/main/java/com/codingame/game/Referee.java" target="_blank">code source du Referee ici</a>.
+    </div>
+</div>

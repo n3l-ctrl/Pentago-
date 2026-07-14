@@ -425,7 +425,7 @@ public class Referee extends AbstractReferee {
                 .setAnchor(0.5).setFontSize(120)
                 .setFontFamily("SansSerif").setFontWeight(Text.FontWeight.BOLD)
                 .setFillColor(color)
-                .setAlpha(0).setZIndex(101);
+                .setAlpha(0).setZIndex(102);
             graphicEntityModule.commitEntityState(0.8, t);
             t.setAlpha(1);
             t.setScale(1.2);
@@ -472,7 +472,7 @@ public class Referee extends AbstractReferee {
         } else {
             marbleSprite.setImage("blue_marble_glow.png");
         }
-        marbleSprite.setZIndex(10);
+        marbleSprite.setZIndex(101);
         graphicEntityModule.commitEntityState(0.8, marbleSprite);
     }
 }

@@ -90,8 +90,7 @@ public class UpdateStatements {
 "      </div>\n" +
 "      <div>\n" +
 "        Welcome to the <strong>Bronze League</strong>! The training wheels are off.<br>\n" +
-"        The board has expanded to a massive 9x9 grid, and you are now facing up to 3 opponents simultaneously in a Free-For-All!<br>\n" +
-"        One more mechanic awaits in the final league...\n" +
+"        The board has expanded to a massive 9x9 grid, and you are now facing up to 3 opponents simultaneously in a Free-For-All!\n" +
 "      </div>\n" +
 "    </div>\n" +
 "\n" +

@@ -11,7 +11,7 @@ import com.codingame.gameengine.core.MultiplayerGameManager;
 import com.codingame.gameengine.module.entities.GraphicEntityModule;
 import com.codingame.gameengine.module.entities.Group;
 import com.codingame.gameengine.module.entities.Rectangle;
-import com.codingame.gameengine.module.entities.Circle;
+import com.codingame.gameengine.module.entities.Sprite;
 import com.codingame.gameengine.module.entities.Text;
 import com.google.inject.Inject;
 
@@ -24,8 +24,7 @@ public class Referee extends AbstractReferee {
     
     private Group[] blockGroups;
     private int[] blockRotations;
-    private Group[][] marbles;
-    private Circle[][] marbleBases;
+    private Sprite[][] marbles;
     private Text[] playerActionTexts;
 
     @Override
@@ -80,8 +79,7 @@ public class Referee extends AbstractReferee {
         int maxBlocks = blocksPerRow * blocksPerRow;
         blockGroups = new Group[maxBlocks];
         blockRotations = new int[maxBlocks];
-        marbles = new Group[maxBlocks][9];
-        marbleBases = new Circle[maxBlocks][9];
+        marbles = new Sprite[maxBlocks][9];
         
         int cellSize = 100;
         int blockSize = cellSize * 3;
@@ -121,40 +119,18 @@ public class Referee extends AbstractReferee {
                             .setZIndex(-5));
                             
                     // 3D Glass Marble Effect
-                    Group marbleGroup = graphicEntityModule.createGroup()
+                    Sprite marbleSprite = graphicEntityModule.createSprite()
+                            .setImage("red_marble.png")
                             .setX(cx)
                             .setY(cy)
+                            .setAnchor(0.5)
+                            .setBaseWidth(cellSize - 16)
+                            .setBaseHeight(cellSize - 16)
                             .setAlpha(0)
                             .setZIndex(0);
                             
-                    int R = cellSize/2 - 8;
-                    
-                    Circle base = graphicEntityModule.createCircle()
-                            .setRadius(R)
-                            .setFillColor(0xffffff)
-                            .setZIndex(0);
-                            
-                    Circle highlight1 = graphicEntityModule.createCircle()
-                            .setRadius((int)(R * 0.4))
-                            .setX((int)(-R * 0.3))
-                            .setY((int)(-R * 0.3))
-                            .setFillColor(0xffffff)
-                            .setAlpha(0.4)
-                            .setZIndex(1);
-                            
-                    Circle highlight2 = graphicEntityModule.createCircle()
-                            .setRadius((int)(R * 0.15))
-                            .setX((int)(-R * 0.5))
-                            .setY((int)(-R * 0.5))
-                            .setFillColor(0xffffff)
-                            .setAlpha(0.7)
-                            .setZIndex(2);
-                            
-                    marbleGroup.add(base, highlight1, highlight2);
-                    
-                    marbles[b][i * 3 + j] = marbleGroup;
-                    marbleBases[b][i * 3 + j] = base;
-                    group.add(marbleGroup);
+                    marbles[b][i * 3 + j] = marbleSprite;
+                    group.add(marbleSprite);
                 }
             }
             
@@ -342,13 +318,16 @@ public class Referee extends AbstractReferee {
             py = 2 - temp;
         }
         
-        Group marbleGroup = marbles[blockId][py * 3 + px];
-        Circle base = marbleBases[blockId][py * 3 + px];
+        Sprite marbleSprite = marbles[blockId][py * 3 + px];
         
-        base.setFillColor(gameManager.getPlayer(playerIndex).getColorToken());
-        marbleGroup.setAlpha(1);
+        if (playerIndex == 0) {
+            marbleSprite.setImage("red_marble.png");
+        } else {
+            marbleSprite.setImage("blue_marble.png");
+        }
+        marbleSprite.setAlpha(1);
         
-        graphicEntityModule.commitEntityState(0.5, marbleGroup, base);
+        graphicEntityModule.commitEntityState(0.5, marbleSprite);
     }
 
     private void animateRotation(int blockId, String dir) {
@@ -394,13 +373,9 @@ public class Referee extends AbstractReferee {
         blockRotations[b1] = blockRotations[b2];
         blockRotations[b2] = tempRot;
         
-        Group[] tempMarbles = marbles[b1];
+        Sprite[] tempMarbles = marbles[b1];
         marbles[b1] = marbles[b2];
         marbles[b2] = tempMarbles;
-        
-        Circle[] tempBases = marbleBases[b1];
-        marbleBases[b1] = marbleBases[b2];
-        marbleBases[b2] = tempBases;
     }
 
     private void advanceTurn() {

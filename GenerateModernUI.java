@@ -125,6 +125,24 @@ public class GenerateModernUI {
             
             gf.dispose();
             ImageIO.write(frame, "png", new File("frame_" + p + ".png"));
+            
+            // Generate GLOW frame for winners
+            BufferedImage glowFrame = new BufferedImage(frameSize, frameSize, BufferedImage.TYPE_INT_ARGB);
+            Graphics2D gg = glowFrame.createGraphics();
+            gg.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            
+            // Massive neon aura
+            gg.setStroke(new BasicStroke(16));
+            gg.setColor(new Color(playerColors[p].getRed(), playerColors[p].getGreen(), playerColors[p].getBlue(), 180));
+            gg.drawRoundRect(3, 3, frameSize-6, frameSize-6, 30, 30);
+            
+            // Thicker inner core (white-ish)
+            gg.setStroke(new BasicStroke(6));
+            gg.setColor(new Color(255, 255, 255, 250));
+            gg.drawRoundRect(8, 8, frameSize-16, frameSize-16, 25, 25);
+            
+            gg.dispose();
+            ImageIO.write(glowFrame, "png", new File("frame_glow_" + p + ".png"));
         }
         
         System.out.println("Generated high-end modern UI!");

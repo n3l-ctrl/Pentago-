@@ -232,7 +232,7 @@ public class Referee extends AbstractReferee {
                 boolean swapsAllowed = true;
                 try {
                     int league = gameManager.getLeagueLevel();
-                    if (league == 3) {
+                    if (league >= 3) {
                         swapsAllowed = true;
                     } else if (league > 0) {
                         swapsAllowed = false;
@@ -413,34 +413,44 @@ public class Referee extends AbstractReferee {
             bg.setAlpha(0.85);
             graphicEntityModule.commitEntityState(1.0, bg);
             
-            // 3. Cinematic Text
-            String winnerText = "";
-            int color = 0xffffff;
-            if (winners.isEmpty()) {
-                winnerText = "DRAW!";
-            } else if (winners.size() == 1) {
-                winnerText = gameManager.getPlayer(winners.get(0)).getNicknameToken() + " WINS!";
-                color = PLAYER_COLORS[winners.get(0) % 4];
+            // 3. Glowing Frames Cinematic
+            List<Integer> finalWinners = new java.util.ArrayList<>();
+            if (!winners.isEmpty()) {
+                finalWinners.addAll(winners);
             } else {
-                winnerText = "TIE BREAKER DRAW!";
+                for (Player p : gameManager.getActivePlayers()) {
+                    finalWinners.add(p.getIndex());
+                }
             }
-            
-            int blocksPerRow = board.getBlocksPerRow();
-            int boardSizePixels = blocksPerRow * 300 + (blocksPerRow - 1) * 10;
-            int bottomY = (1080 - boardSizePixels) / 2 + boardSizePixels;
-            int textY = bottomY + (1080 - bottomY) / 2;
-            int fontSize = blocksPerRow == 3 ? 80 : 120;
-            
-            Text t = graphicEntityModule.createText(winnerText)
-                .setX(1920/2).setY(textY)
-                .setAnchor(0.5).setFontSize(fontSize)
-                .setFontFamily("SansSerif").setFontWeight(Text.FontWeight.BOLD)
-                .setFillColor(color)
-                .setAlpha(0).setZIndex(102);
-            graphicEntityModule.commitEntityState(0.8, t);
-            t.setAlpha(1);
-            t.setScale(1.2);
-            graphicEntityModule.commitEntityState(1.0, t);
+
+            for (Integer pIdx : finalWinners) {
+                int x = (pIdx % 2 == 0) ? 250 : 1920 - 250;
+                int y = (pIdx < 2) ? 300 : 1080 - 300;
+
+                // Spawn Glow Frame
+                Sprite glow = graphicEntityModule.createSprite()
+                    .setImage("frame_glow_" + (pIdx % 4) + ".png")
+                    .setX(x)
+                    .setY(y - 100)
+                    .setAnchor(0.5)
+                    .setBaseWidth(180)
+                    .setBaseHeight(180)
+                    .setZIndex(-4)
+                    .setAlpha(0);
+                
+                graphicEntityModule.commitEntityState(0.8, glow);
+                glow.setAlpha(1);
+                graphicEntityModule.commitEntityState(1.0, glow);
+
+                // Update text to "WINNER"
+                Text actionText = playerActionTexts[pIdx];
+                graphicEntityModule.commitEntityState(0.8, actionText);
+                actionText.setText("WINNER")
+                    .setFillColor(0xffffff)
+                    .setFontSize(50)
+                    .setFontWeight(Text.FontWeight.BOLD);
+                graphicEntityModule.commitEntityState(1.0, actionText);
+            }
             
             if (!winners.isEmpty()) {
                 for (Player p : gameManager.getPlayers()) {

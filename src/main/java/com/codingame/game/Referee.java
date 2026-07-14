@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
-import com.codingame.gameengine.core.AbstractPlayer.TimeoutException;
 import com.codingame.gameengine.core.AbstractReferee;
 import com.codingame.gameengine.core.MultiplayerGameManager;
 import com.codingame.gameengine.module.entities.GraphicEntityModule;
@@ -109,8 +108,8 @@ public class Referee extends AbstractReferee {
                             .setX(cx)
                             .setY(cy)
                             .setAnchor(0.5)
-                            .setBaseWidth(cellSize - 16)
-                            .setBaseHeight(cellSize - 16)
+                            .setBaseWidth(cellSize)
+                            .setBaseHeight(cellSize)
                             .setAlpha(0)
                             .setZIndex(0);
                             
@@ -386,25 +385,94 @@ public class Referee extends AbstractReferee {
     }
 
     private boolean checkWinCondition() {
+        List<WinLine> winningLines = board.getWinningLines();
         List<Integer> winners = board.getWinningPlayers();
-        if (!winners.isEmpty()) {
-            for (Player p : gameManager.getPlayers()) {
-                if (winners.contains(p.getIndex())) {
-                    p.setScore(1);
-                } else if (p.isActive()) {
-                    p.setScore(0);
+        
+        if (!winners.isEmpty() || board.isFull()) {
+            
+            gameManager.setFrameDuration(2500); // Give plenty of time for the final animation
+            
+            // 1. Highlight the winning marbles
+            for (WinLine line : winningLines) {
+                for (java.awt.Point p : line.points) {
+                    highlightMarble(p.x, p.y, line.playerId);
                 }
             }
-            gameManager.endGame();
-            return true;
-        } else if (board.isFull()) {
-            // Draw
-            for (Player p : gameManager.getActivePlayers()) {
-                p.setScore(1);
+            
+            // 2. Cinematic Background overlay
+            Rectangle bg = graphicEntityModule.createRectangle()
+                .setWidth(1920).setHeight(1080)
+                .setFillColor(0x000000).setAlpha(0)
+                .setZIndex(100);
+            graphicEntityModule.commitEntityState(0.8, bg);
+            bg.setAlpha(0.85);
+            graphicEntityModule.commitEntityState(1.0, bg);
+            
+            // 3. Cinematic Text
+            String winnerText = "";
+            int color = 0xffffff;
+            if (winners.isEmpty()) {
+                winnerText = "DRAW!";
+            } else if (winners.size() == 1) {
+                winnerText = gameManager.getPlayer(winners.get(0)).getNicknameToken() + " WINS!";
+                color = winners.get(0) == 0 ? 0xff4444 : 0x4444ff;
+            } else {
+                winnerText = "TIE BREAKER DRAW!";
+            }
+            
+            Text t = graphicEntityModule.createText(winnerText)
+                .setX(1920/2).setY(1080/2)
+                .setAnchor(0.5).setFontSize(120)
+                .setFontFamily("SansSerif").setFontWeight(Text.FontWeight.BOLD)
+                .setFillColor(color)
+                .setAlpha(0).setZIndex(101);
+            graphicEntityModule.commitEntityState(0.8, t);
+            t.setAlpha(1);
+            t.setScale(1.2);
+            graphicEntityModule.commitEntityState(1.0, t);
+            
+            if (!winners.isEmpty()) {
+                for (Player p : gameManager.getPlayers()) {
+                    if (winners.contains(p.getIndex())) {
+                        p.setScore(1);
+                    } else if (p.isActive()) {
+                        p.setScore(0);
+                    }
+                }
+            } else {
+                for (Player p : gameManager.getActivePlayers()) {
+                    p.setScore(1);
+                }
             }
             gameManager.endGame();
             return true;
         }
         return false;
+    }
+    
+    private void highlightMarble(int x, int y, int playerIndex) {
+        int blocksPerRow = board.getBlocksPerRow();
+        int bx = x / 3;
+        int by = y / 3;
+        int blockId = by * blocksPerRow + bx;
+        int localX = x % 3;
+        int localY = y % 3;
+        int px = localX;
+        int py = localY;
+        for (int i = 0; i < blockRotations[blockId]; i++) {
+            int temp = px;
+            px = py;
+            py = 2 - temp;
+        }
+        Sprite marbleSprite = marbles[blockId][py * 3 + px];
+        
+        graphicEntityModule.commitEntityState(0.7, marbleSprite);
+        if (playerIndex == 0) {
+            marbleSprite.setImage("red_marble_glow.png");
+        } else {
+            marbleSprite.setImage("blue_marble_glow.png");
+        }
+        marbleSprite.setZIndex(10);
+        graphicEntityModule.commitEntityState(0.8, marbleSprite);
     }
 }

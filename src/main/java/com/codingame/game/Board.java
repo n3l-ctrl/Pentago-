@@ -2,6 +2,7 @@ package com.codingame.game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Point;
 
 public class Board {
     private final int size;
@@ -111,53 +112,64 @@ public class Board {
         return true;
     }
 
-    public List<Integer> getWinningPlayers() {
-        boolean[] wins = new boolean[4]; // Max 4 players
+    public List<WinLine> getWinningLines() {
+        List<WinLine> winningLines = new ArrayList<>();
         
         // Check horizontal, vertical, diagonal
         // Horizontal
         for (int y = 0; y < size; y++) {
             for (int x = 0; x <= size - 5; x++) {
-                checkLine(wins, x, y, 1, 0);
+                checkLine(winningLines, x, y, 1, 0);
             }
         }
         // Vertical
         for (int x = 0; x < size; x++) {
             for (int y = 0; y <= size - 5; y++) {
-                checkLine(wins, x, y, 0, 1);
+                checkLine(winningLines, x, y, 0, 1);
             }
         }
         // Diagonal 1 (Top-Left to Bottom-Right)
         for (int y = 0; y <= size - 5; y++) {
             for (int x = 0; x <= size - 5; x++) {
-                checkLine(wins, x, y, 1, 1);
+                checkLine(winningLines, x, y, 1, 1);
             }
         }
         // Diagonal 2 (Top-Right to Bottom-Left)
         for (int y = 0; y <= size - 5; y++) {
             for (int x = 4; x < size; x++) {
-                checkLine(wins, x, y, -1, 1);
+                checkLine(winningLines, x, y, -1, 1);
             }
         }
 
+        return winningLines;
+    }
+
+    public List<Integer> getWinningPlayers() {
         List<Integer> winners = new ArrayList<>();
-        for (int p = 0; p < 4; p++) {
-            if (wins[p]) {
-                winners.add(p);
+        List<WinLine> lines = getWinningLines();
+        for (WinLine line : lines) {
+            if (!winners.contains(line.playerId)) {
+                winners.add(line.playerId);
             }
         }
         return winners;
     }
 
-    private void checkLine(boolean[] wins, int startX, int startY, int dx, int dy) {
+    private void checkLine(List<WinLine> winningLines, int startX, int startY, int dx, int dy) {
         int player = grid[startY][startX];
         if (player == -1) return;
+        
+        List<Point> linePoints = new ArrayList<>();
+        linePoints.add(new Point(startX, startY));
+        
         for (int i = 1; i < 5; i++) {
             if (grid[startY + dy * i][startX + dx * i] != player) {
                 return;
             }
+            linePoints.add(new Point(startX + dx * i, startY + dy * i));
         }
-        wins[player] = true;
+        
+        winningLines.add(new WinLine(player, linePoints));
     }
 
     public boolean isFull() {

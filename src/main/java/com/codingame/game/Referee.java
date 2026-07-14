@@ -34,7 +34,6 @@ public class Referee extends AbstractReferee {
 
     @Override
     public void init() {
-        System.err.println("REFEREE: init() started");
         try {
             int numPlayers = gameManager.getPlayerCount();
             int boardSize = 9;
@@ -64,7 +63,6 @@ public class Referee extends AbstractReferee {
             graphicEntityModule.createText("INIT ERR: " + t.getMessage())
                     .setX(100).setY(100).setFontSize(40).setFillColor(0xff0000);
         }
-        System.err.println("REFEREE: init() finished");
     }
     
     private void drawBoard() {
@@ -209,14 +207,10 @@ public class Referee extends AbstractReferee {
             }
             player.sendInputLine(sb.toString());
         }
-        System.err.println("REFEREE: executing player...");
         player.execute();
-        System.err.println("REFEREE: player executed.");
 
         try {
-            System.err.println("REFEREE: getting outputs...");
             List<String> outputs = player.getOutputs();
-            System.err.println("REFEREE: got outputs: " + outputs);
             if (outputs.isEmpty()) {
                 throw new Exception("No output provided");
             }
@@ -299,9 +293,7 @@ public class Referee extends AbstractReferee {
             deactivatePlayer(player, msg != null ? msg : e.toString());
         }
 
-        System.err.println("REFEREE: advancing turn...");
         advanceTurn();
-        System.err.println("REFEREE: gameTurn(" + turn + ") finished");
     }
     
     private void drawMarble(int x, int y, int playerIndex) {

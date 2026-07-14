@@ -71,6 +71,8 @@ public class UpdateStatements {
 "                <var>block</var>: The ID of the block you wish to rotate (<const>0</const> to <const>3</const>).\n" +
 "                <br>\n" +
 "                <var>dir</var>: The direction to rotate (<action>L</action> or <action>R</action>).\n" +
+"                <br><br>\n" +
+"                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "            </div>\n" +
 "        </div>\n" +
 "    </div>\n" +
@@ -146,6 +148,8 @@ public class UpdateStatements {
 "                <var>block</var>: The ID of the block you wish to rotate (<const>0</const> to <const>8</const>).\n" +
 "                <br>\n" +
 "                <var>dir</var>: The direction to rotate (<action>L</action> or <action>R</action>).\n" +
+"                <br><br>\n" +
+"                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "            </div>\n" +
 "        </div>\n" +
 "    </div>\n" +
@@ -162,7 +166,7 @@ public class UpdateStatements {
 "        <strong>🏆 This is a multi-league puzzle!</strong>\n" +
 "      </div>\n" +
 "      <div>\n" +
-"        You are now in the <strong>Silver League</strong>, the final arena.<br>\n" +
+"        You are now in the <strong>Silver League</strong>.<br>\n" +
 "        The ultimate mechanic has been unlocked: <action>SWAP</action>. You can now exchange the physical positions of two blocks instead of rotating them!\n" +
 "      </div>\n" +
 "    </div>\n" +
@@ -219,10 +223,14 @@ public class UpdateStatements {
 "                <span class=\"statement-lineno\">Option A (Rotate): </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>\n" +
 "                <br>\n" +
 "                <var>dir</var> is <action>L</action> or <action>R</action>.\n" +
+"                <br>\n" +
+"                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "                <br><br>\n" +
 "                <span class=\"statement-lineno\">Option B (Swap): </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>b1</var> and <var>b2</var> are the IDs of the two adjacent blocks you wish to swap.\n" +
+"                <br>\n" +
+"                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 "    </div>\n" +
@@ -296,10 +304,14 @@ public class UpdateStatements {
 "                <span class=\"statement-lineno\">Option A (Rotate): </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>\n" +
 "                <br>\n" +
 "                <var>dir</var> is <action>L</action> or <action>R</action>.\n" +
+"                <br>\n" +
+"                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "                <br><br>\n" +
 "                <span class=\"statement-lineno\">Option B (Swap): </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>b1</var> and <var>b2</var> are the IDs of the two adjacent blocks you wish to swap.\n" +
+"                <br>\n" +
+"                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 "    </div>\n" +

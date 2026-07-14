@@ -4,7 +4,7 @@
         <strong>🏆 This is a multi-league puzzle!</strong>
       </div>
       <div>
-        You are now in the <strong>Silver League</strong>, the final arena.<br>
+        You are now in the <strong>Silver League</strong>.<br>
         The ultimate mechanic has been unlocked: <action>SWAP</action>. You can now exchange the physical positions of two blocks instead of rotating them!
       </div>
     </div>
@@ -61,10 +61,14 @@
                 <span class="statement-lineno">Option A (Rotate): </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
                 <br>
                 <var>dir</var> is <action>L</action> or <action>R</action>.
+                <br>
+                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)
                 <br><br>
                 <span class="statement-lineno">Option B (Swap): </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
                 <br>
                 <var>b1</var> and <var>b2</var> are the IDs of the two adjacent blocks you wish to swap.
+                <br>
+                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)
             </div>
         </div>
     </div>

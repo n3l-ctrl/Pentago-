@@ -63,17 +63,10 @@ public class Referee extends AbstractReferee {
     }
     
     private void drawBoard() {
-        graphicEntityModule.createRectangle()
-                .setWidth(1920)
-                .setHeight(1080)
-                .setFillColor(0x222222);
+        graphicEntityModule.createSprite()
+                .setImage("modern_bg.jpg")
+                .setZIndex(-100);
                 
-        graphicEntityModule.createText("VERSION 5")
-                .setX(50)
-                .setY(50)
-                .setFontSize(80)
-                .setFillColor(0xff0000)
-                .setZIndex(100);
 
         int blocksPerRow = board.getBlocksPerRow();
         int maxBlocks = blocksPerRow * blocksPerRow;
@@ -94,10 +87,11 @@ public class Referee extends AbstractReferee {
             
             Group group = graphicEntityModule.createGroup()
                     .setX(startX + bx * (blockSize + gap) + blockSize/2)
-                    .setY(startY + by * (blockSize + gap) + blockSize/2);
+                    .setY(startY + by * (blockSize + gap) + blockSize/2)
+                    .setScale(0); // Hidden for intro animation
             
             group.add(graphicEntityModule.createSprite()
-                    .setImage("wood_texture.png")
+                    .setImage("modern_block.png")
                     .setBaseWidth(blockSize)
                     .setBaseHeight(blockSize)
                     .setX(-blockSize/2)
@@ -174,7 +168,16 @@ public class Referee extends AbstractReferee {
 
     @Override
     public void gameTurn(int turn) {
-        System.err.println("REFEREE: gameTurn(" + turn + ") started for player " + currentPlayerIndex);
+        if (turn == 1) {
+            gameManager.setFrameDuration(1500); // 1.5 seconds for first turn to allow intro animation
+            for (Group group : blockGroups) {
+                group.setScale(1);
+                graphicEntityModule.commitEntityState(0.4, group);
+            }
+        } else {
+            gameManager.setFrameDuration(1000);
+        }
+
         Player player = gameManager.getPlayer(currentPlayerIndex);
 
         if (!player.isActive()) {

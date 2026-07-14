@@ -465,14 +465,30 @@ public class Referee extends AbstractReferee {
             py = 2 - temp;
         }
         Sprite marbleSprite = marbles[blockId][py * 3 + px];
+        Group group = blockGroups[blockId];
         
-        graphicEntityModule.commitEntityState(0.7, marbleSprite);
-        if (playerIndex == 0) {
-            marbleSprite.setImage("red_marble_glow.png");
-        } else {
-            marbleSprite.setImage("blue_marble_glow.png");
-        }
-        marbleSprite.setZIndex(101);
-        graphicEntityModule.commitEntityState(0.8, marbleSprite);
+        double theta = group.getRotation();
+        double lx = marbleSprite.getX();
+        double ly = marbleSprite.getY();
+        
+        double rotatedX = lx * Math.cos(theta) - ly * Math.sin(theta);
+        double rotatedY = lx * Math.sin(theta) + ly * Math.cos(theta);
+        
+        double globalX = group.getX() + rotatedX;
+        double globalY = group.getY() + rotatedY;
+        
+        Sprite clone = graphicEntityModule.createSprite()
+            .setImage(playerIndex == 0 ? "red_marble_glow.png" : "blue_marble_glow.png")
+            .setX((int) Math.round(globalX))
+            .setY((int) Math.round(globalY))
+            .setAnchor(0.5)
+            .setBaseWidth(100)
+            .setBaseHeight(100)
+            .setZIndex(101)
+            .setAlpha(0);
+            
+        graphicEntityModule.commitEntityState(0.7, clone);
+        clone.setAlpha(1);
+        graphicEntityModule.commitEntityState(0.8, clone);
     }
 }

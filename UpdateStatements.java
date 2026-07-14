@@ -14,7 +14,7 @@ public class UpdateStatements {
 "      </div>\n" +
 "      <div>\n" +
 "        Welcome to the <strong>Wood League</strong>! The game is simplified for you to learn the basics.<br>\n" +
-"        You play in a 1v1 duel on a 6x6 grid.\n" +
+"        You play in a 1v1 duel on a 6x6 board.\n" +
 "      </div>\n" +
 "    </div>\n" +
 "\n" +

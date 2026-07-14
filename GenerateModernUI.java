@@ -102,7 +102,7 @@ public class GenerateModernUI {
         ImageIO.write(bg, "jpg", new File("modern_bg.jpg"));
         
         // Generate Player Frames
-        Color[] playerColors = {new Color(0xff, 0x44, 0x44), new Color(0x44, 0x44, 0xff), new Color(0x44, 0xff, 0x44), new Color(0xff, 0xff, 0x44)};
+        Color[] playerColors = {new Color(0xff, 0x44, 0x44), new Color(0x44, 0x44, 0xff), new Color(0xff, 0xff, 0x44), new Color(0x44, 0xff, 0x44)};
         for (int p = 0; p < 4; p++) {
             int frameSize = 180;
             BufferedImage frame = new BufferedImage(frameSize, frameSize, BufferedImage.TYPE_INT_ARGB);

@@ -124,16 +124,35 @@ public class Referee extends AbstractReferee {
                             .setAlpha(0)
                             .setZIndex(0);
                             
-                    int realX = bx * 3 + j;
-                    int realY = by * 3 + i;
-                    tooltipModule.setTooltipText(marbleSprite, "x: " + realX + "\ny: " + realY);
-                            
                     marbles[b][i * 3 + j] = marbleSprite;
                     group.add(marbleSprite);
                 }
             }
             
             blockGroups[b] = group;
+        }
+        
+        for (int y = 0; y < blocksPerRow * 3; y++) {
+            for (int x = 0; x < blocksPerRow * 3; x++) {
+                int bx = x / 3;
+                int by = y / 3;
+                int i = y % 3;
+                int j = x % 3;
+                
+                int absX = startX + bx * (blockSize + gap) + j * cellSize + cellSize/2;
+                int absY = startY + by * (blockSize + gap) + i * cellSize + cellSize/2;
+                
+                Rectangle tooltipRect = graphicEntityModule.createRectangle()
+                    .setWidth(cellSize)
+                    .setHeight(cellSize)
+                    .setX(absX)
+                    .setY(absY)
+                    .setAnchor(0.5)
+                    .setAlpha(0)
+                    .setZIndex(100);
+                    
+                tooltipModule.setTooltipText(tooltipRect, "x: " + x + "\ny: " + y);
+            }
         }
 
         playerActionTexts = new Text[gameManager.getPlayerCount()];

@@ -1,19 +1,25 @@
+<div id="statement_back" class="statement_back" style="display: none"></div>
 <div class="statement-body">
-    <div style="background-color: rgba(255, 193, 7, 0.15); padding: 15px; margin-bottom: 30px; border-radius: 5px; border-left: 8px solid #ffc107; font-size: 1.1em;">
-      <div style="font-size: 1.2em; margin-bottom: 10px;">
-        <strong>🏆 This is a multi-league puzzle!</strong>
-      </div>
-      <div>
-        Welcome to the <strong>Bronze League</strong>! The training wheels are off.<br>
-        The board has expanded to a massive 9x9 board, and you are now facing up to 3 opponents simultaneously in a Free-For-All!
-      </div>
+    <!-- LEAGUE ALERT -->
+    <div style="color:#7cc576;background-color:rgba( 124 , 197 , 118 , 0.1 );padding:20px;margin-right:15px;margin-left:15px;margin-bottom:10px;text-align:left">
+        <div style="text-align:center;margin-bottom:6px">
+            <img src="//cdn.codingame.com/smash-the-code/statement/league_wood_04.png">
+        </div>
+        <p style="text-align:center;font-weight:700;margin-bottom:6px">
+            This is a <b>league based</b> challenge.
+        </p>
+        <div class="statement-league-alert-content">
+            For this challenge, multiple leagues for the same game are available. Once you have proven your worth against the Boss, you will access the higher league.<br>
+            <br>
+            <b>Bronze League:</b> The training wheels are off. The board has expanded to a massive 9x9 board, and you are now facing up to 3 opponents simultaneously in a Free-For-All!
+        </div>
     </div>
 
     <div class="statement-section statement-goal">
-        <h1>
+        <h2>
             <span class="icon icon-goal">&nbsp;</span>
             <span>Goal</span>
-        </h1>
+        </h2>
         <div class="statement-goal-content">
             <p>
                 Be the first player to form a line of 5 of your marbles either horizontally, vertically, or diagonally.<br>
@@ -23,10 +29,10 @@
     </div>
 
     <div class="statement-section statement-rules">
-        <h1>
+        <h2>
             <span class="icon icon-rules">&nbsp;</span>
             <span>Rules</span>
-        </h1>
+        </h2>
         <div class="statement-rules-content">
             <p>On your turn, you must perform exactly two actions:</p>
             <ol>
@@ -38,14 +44,49 @@
             </div>
             <img src="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/config/level2/coords_9x9.png" style="width: 100%; max-width: 500px; display: block; margin: 10px auto;" />
             <p><strong>Draws:</strong> If multiple players form a line of 5 simultaneously, it is a draw between those players. If the board is completely filled with no lines of 5, the game ends in a global draw for all active players.</p>
+      <br />
+      <div class="statement-victory-conditions">
+        <div class="icon victory"></div>
+        <div class="blk">
+          <div class="title">Victory Conditions</div>
+          <div class="text">
+          <ul style="padding-bottom: 0;">
+            <li>Form a line of 5 marbles of your color horizontally, vertically, or diagonally.</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <div class="statement-lose-conditions">
+        <div class="icon lose"></div>
+        <div class="blk">
+          <div class="title">Defeat Conditions</div>
+          <div class="text">
+          <ul style="padding-bottom: 0;">
+            <li>Your program times out, crashes, or outputs an invalid command.</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+    <div class="statement-section statement-expertrules">
+        <h2>
+            <span class="icon icon-expertrules">&nbsp;</span>
+            <span>Technical Details</span>
+        </h2>
+        <div class="statement-expert-rules-content">
+            <ul style="padding-left: 20px; padding-bottom: 0">
+                <li>You can inspect the Referee source code on <a href="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/src/main/java/com/codingame/game/Referee.java" target="_blank">GitHub</a>.</li>
+            </ul>
+        </div>
+    </div>
         </div>
     </div>
 
     <div class="statement-section statement-protocol">
-        <h1>
+        <h2>
             <span class="icon icon-protocol">&nbsp;</span>
             <span>Game Input/Output</span>
-        </h1>
+        </h2>
         <div class="blk">
             <div class="title">Input for one game turn</div>
             <div class="text">
@@ -69,8 +110,13 @@
             </div>
         </div>
     </div>
-    <br>
-    <div style="text-align: center; color: #888; font-size: 0.9em;">
-        If you want to understand all the mechanics in detail, you can find the <a href="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/src/main/java/com/codingame/game/Referee.java" target="_blank">Referee source code here</a>.
+    <div style="color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 20px; margin-top: 10px; text-align: left;">
+        <div style="text-align: center; margin-bottom: 6px"><img src="//cdn.codingame.com/smash-the-code/statement/league_wood_04.png" /></div>
+        <div style="text-align: center; font-weight: 700; margin-bottom: 6px;">
+            What is in store for me in the higher leagues?
+        </div>
+        <ul>
+            <li>Unlock the SWAP mechanic to exchange the physical positions of two 3x3 blocks.</li>
+        </ul>
     </div>
 </div>

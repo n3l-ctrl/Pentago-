@@ -1,19 +1,25 @@
+<div id="statement_back" class="statement_back" style="display: none"></div>
 <div class="statement-body">
-    <div style="background-color: #2b2b2b; color: #f2f2f2; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
-      <div style="font-size: 1.2em; margin-bottom: 10px;">
-        <strong>🏆 Ceci est un puzzle multi-ligues !</strong>
-      </div>
-      <div>
-        Bienvenue dans la <strong>Ligue Bronze</strong> ! Fini de jouer.<br>
-        Le plateau s'est étendu à un format massif 9x9, et vous affrontez maintenant jusqu'à 3 adversaires en même temps !
-      </div>
+    <!-- LEAGUE ALERT -->
+    <div style="color:#7cc576;background-color:rgba( 124 , 197 , 118 , 0.1 );padding:20px;margin-right:15px;margin-left:15px;margin-bottom:10px;text-align:left">
+        <div style="text-align:center;margin-bottom:6px">
+            <img src="//cdn.codingame.com/smash-the-code/statement/league_wood_04.png">
+        </div>
+        <p style="text-align:center;font-weight:700;margin-bottom:6px">
+            Ce challenge se déroule en <b>ligues</b>.
+        </p>
+        <div class="statement-league-alert-content">
+            Pour ce challenge, plusieurs ligues pour le même jeu sont disponibles. Une fois que vous aurez prouvé votre valeur contre le Boss, vous accéderez à la ligue supérieure.<br>
+            <br>
+            <b>Ligue Bronze :</b> Fini de jouer. Le plateau s'est étendu à un format massif 9x9, et vous affrontez maintenant jusqu'à 3 adversaires en même temps !
+        </div>
     </div>
 
     <div class="statement-section statement-goal">
-        <h1>
+        <h2>
             <span class="icon icon-goal">&nbsp;</span>
             <span>Objectif</span>
-        </h1>
+        </h2>
         <div class="statement-goal-content">
             <p>
                 Soyez le premier joueur à former un alignement de 5 billes horizontalement, verticalement ou diagonalement.<br>
@@ -23,10 +29,10 @@
     </div>
 
     <div class="statement-section statement-rules">
-        <h1>
+        <h2>
             <span class="icon icon-rules">&nbsp;</span>
             <span>Règles</span>
-        </h1>
+        </h2>
         <div class="statement-rules-content">
             <p>À votre tour, vous devez effectuer exactement deux actions :</p>
             <ol>
@@ -38,14 +44,49 @@
             </div>
             <img src="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/config/level2/coords_9x9.png" style="width: 100%; max-width: 500px; display: block; margin: 10px auto;" />
             <p><strong>Égalités :</strong> Si plusieurs joueurs forment une ligne de 5 simultanément, c'est un match nul entre ces joueurs. Si le plateau est totalement rempli sans aucun alignement de 5, la partie se termine par une égalité globale.</p>
+      <br />
+      <div class="statement-victory-conditions">
+        <div class="icon victory"></div>
+        <div class="blk">
+          <div class="title">Conditions de Victoire</div>
+          <div class="text">
+          <ul style="padding-bottom: 0;">
+            <li>Former un alignement de 5 billes de votre couleur horizontalement, verticalement ou diagonalement.</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <div class="statement-lose-conditions">
+        <div class="icon lose"></div>
+        <div class="blk">
+          <div class="title">Conditions de Défaite</div>
+          <div class="text">
+          <ul style="padding-bottom: 0;">
+            <li>Votre programme dépasse le temps imparti, plante ou renvoie une commande invalide.</li>
+          </ul>
+          </div>
+        </div>
+      </div>
+      <br />
+    <div class="statement-section statement-expertrules">
+        <h2>
+            <span class="icon icon-expertrules">&nbsp;</span>
+            <span>Détails Techniques</span>
+        </h2>
+        <div class="statement-expert-rules-content">
+            <ul style="padding-left: 20px; padding-bottom: 0">
+                <li>Vous pouvez consulter le code source du Referee sur <a href="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/src/main/java/com/codingame/game/Referee.java" target="_blank">GitHub</a>.</li>
+            </ul>
+        </div>
+    </div>
         </div>
     </div>
 
     <div class="statement-section statement-protocol">
-        <h1>
+        <h2>
             <span class="icon icon-protocol">&nbsp;</span>
             <span>Entrées/Sorties du jeu</span>
-        </h1>
+        </h2>
         <div class="blk">
             <div class="title">Entrées pour un tour de jeu</div>
             <div class="text">
@@ -69,8 +110,13 @@
             </div>
         </div>
     </div>
-    <br>
-    <div style="text-align: center; color: #888; font-size: 0.9em;">
-        Pour comprendre les mécaniques en détail, vous pouvez consulter le <a href="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/src/main/java/com/codingame/game/Referee.java" target="_blank">code source du Referee ici</a>.
+    <div style="color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 20px; margin-top: 10px; text-align: left;">
+        <div style="text-align: center; margin-bottom: 6px"><img src="//cdn.codingame.com/smash-the-code/statement/league_wood_04.png" /></div>
+        <div style="text-align: center; font-weight: 700; margin-bottom: 6px;">
+            Qu'est-ce qui m'attend dans les ligues supérieures ?
+        </div>
+        <ul>
+            <li>Débloquer la mécanique SWAP pour échanger les positions physiques de deux blocs 3x3.</li>
+        </ul>
     </div>
 </div>

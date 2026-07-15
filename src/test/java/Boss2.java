@@ -19,9 +19,11 @@ class Boss2 {
     
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
+        if (!in.hasNextInt()) return;
+        int numPlayers = in.nextInt();
+        int myId = in.nextInt();
         while (in.hasNext()) {
             size = in.nextInt();
-            int numPlayers = 2;
             grid = new int[size][size];
             List<int[]> emptyCells = new ArrayList<>();
             int totalPieces = 0;
@@ -40,7 +42,6 @@ class Boss2 {
                 }
             }
             
-            int myId = totalPieces % numPlayers;
             
             List<Move> allMoves = new ArrayList<>();
             int blocks = (size == 6) ? 4 : 9;

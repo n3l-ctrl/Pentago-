@@ -1,7 +1,7 @@
 read playerCount:int
 read myId:int
-gameloop
 read size:int
+gameloop
 loop size read row:word(10)
 write action
 
@@ -12,4 +12,4 @@ size: The size of the board (6 or 9)
 row: A string representing a row of the board. '.' is empty, '0' to '3' indicates a marble placed by the player with that ID.
 
 OUTPUT
-action: X Y BLOCK DIR (e.g. 4 3 2 R) or X Y SWAP B1 B2 (From Wood 2 league only)
+action: X Y BLOCK DIR (e.g. 4 3 2 R) or X Y B1 B2 (From Wood 2 league only)

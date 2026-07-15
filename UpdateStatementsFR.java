@@ -76,12 +76,23 @@ public class UpdateStatementsFR {
 "        </div>\n" +
 "    </div>\n";
 
-        String initInputFr = 
+        String initInputFrL1 = 
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Entrées d'initialisation</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>playerCount</var>, le nombre de joueurs dans la partie.</p>\n" +
+"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>playerCount</var>, le nombre de joueurs dans la partie (<const>2</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Ligne 2: </span><var>myId</var>, votre ID de joueur (<const>0</const> ou <const>1</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Ligne 3: </span><var>size</var>, la taille du plateau (<const>6</const>).</p>\n" +
+"            </div>\n" +
+"        </div>\n";
+
+        String initInputFrL234 = 
+"        <div class=\"blk\">\n" +
+"            <div class=\"title\">Entrées d'initialisation</div>\n" +
+"            <div class=\"text\">\n" +
+"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>playerCount</var>, le nombre de joueurs dans la partie (<const>3</const> ou <const>4</const>).</p>\n" +
 "                <p><span class=\"statement-lineno\">Ligne 2: </span><var>myId</var>, votre ID de joueur (<const>0</const> à <const>3</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Ligne 3: </span><var>size</var>, la taille du plateau (<const>9</const>).</p>\n" +
 "            </div>\n" +
 "        </div>\n";
 
@@ -121,12 +132,11 @@ vicDefFr + expertRulesFr +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Entrées/Sorties du jeu</span>\n" +
 "        </h2>\n" +
-initInputFr +
+initInputFrL1 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Entrées pour un tour de jeu</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>size</var>, la taille du plateau (<const>6</const>).</p>\n" +
-"                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>1</const> représente la bille d'un joueur.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lignes : </span>chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>1</const> représente la bille d'un joueur.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -185,12 +195,11 @@ vicDefFr + expertRulesFr +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Entrées/Sorties du jeu</span>\n" +
 "        </h2>\n" +
-initInputFr +
+initInputFrL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Entrées pour un tour de jeu</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>size</var>, la taille du plateau (<const>9</const>).</p>\n" +
-"                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lignes : </span>chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -221,7 +230,7 @@ constraintsFr +
 
         String baseL3 = 
 topAlertPart1 +
-"            <b>Ligue Wood 2 :</b> La mécanique ultime a été débloquée : <action>SWAP</action>. Vous pouvez désormais échanger les positions de deux blocs au lieu de les pivoter !\n" +
+"            <b>Ligue Wood 2 :</b> La mécanique ultime a été débloquée : SWAP. Vous pouvez désormais échanger les positions de deux blocs au lieu de les pivoter !\n" +
 topAlertPart2 + goalFr +
 "    <div class=\"statement-section statement-rules\">\n" +
 "        <h2>\n" +
@@ -250,12 +259,11 @@ vicDefFr + expertRulesFr +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Entrées/Sorties du jeu</span>\n" +
 "        </h2>\n" +
-initInputFr +
+initInputFrL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Entrées pour un tour de jeu</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>size</var>, la taille du plateau (<const>9</const>).</p>\n" +
-"                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lignes : </span>chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -269,12 +277,12 @@ initInputFr +
 "                <br>\n" +
 "                <strong>Exemple :</strong> <code>2 1 0 R</code> (Place une bille en 2,1 et pivote le bloc 0 vers la droite)\n" +
 "                <br><br>\n" +
-"                <span class=\"statement-lineno\">Option B (Échange) : Une seule ligne contenant 5 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
+"                <span class=\"statement-lineno\">Option B (Échange) : Une seule ligne contenant 4 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>x</var>, <var>y</var> : Coordonnées où placer votre bille.<br>\n" +
 "                <var>b1</var> et <var>b2</var> : Les ID des deux blocs adjacents que vous souhaitez échanger.\n" +
 "                <br>\n" +
-"                <strong>Exemple :</strong> <code>2 1 SWAP 0 1</code> (Place une bille en 2,1 et échange les blocs 0 et 1)\n" +
+"                <strong>Exemple :</strong> <code>2 1 0 1</code> (Place une bille en 2,1 et échange les blocs 0 et 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 constraintsFr +
@@ -312,12 +320,11 @@ vicDefFr + expertRulesFr +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Entrées/Sorties du jeu</span>\n" +
 "        </h2>\n" +
-initInputFr +
+initInputFrL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Entrées pour un tour de jeu</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Ligne 1: </span><var>size</var>, la taille du plateau (<const>9</const>).</p>\n" +
-"                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lignes : </span>chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -331,12 +338,12 @@ initInputFr +
 "                <br>\n" +
 "                <strong>Exemple :</strong> <code>2 1 0 R</code> (Place une bille en 2,1 et pivote le bloc 0 vers la droite)\n" +
 "                <br><br>\n" +
-"                <span class=\"statement-lineno\">Option B (Échange) : Une seule ligne contenant 5 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
+"                <span class=\"statement-lineno\">Option B (Échange) : Une seule ligne contenant 4 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>x</var>, <var>y</var> : Coordonnées où placer votre bille.<br>\n" +
 "                <var>b1</var> et <var>b2</var> : Les ID des deux blocs adjacents que vous souhaitez échanger.\n" +
 "                <br>\n" +
-"                <strong>Exemple :</strong> <code>2 1 SWAP 0 1</code> (Place une bille en 2,1 et échange les blocs 0 et 1)\n" +
+"                <strong>Exemple :</strong> <code>2 1 0 1</code> (Place une bille en 2,1 et échange les blocs 0 et 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 constraintsFr +

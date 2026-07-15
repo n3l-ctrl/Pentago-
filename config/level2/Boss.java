@@ -21,7 +21,7 @@ class Player {
         
         public String toString() {
             if (isSwap) {
-                return x + " " + y + " SWAP " + block + " " + b2;
+                return x + " " + y + " " + block + " " + b2;
             }
             return x + " " + y + " " + block + " " + dir;
         }
@@ -32,14 +32,15 @@ class Player {
         if (!in.hasNextInt()) return;
         int numPlayers = in.nextInt();
         int myId = in.nextInt();
+        size = in.nextInt();
         while (in.hasNext()) {
-            size = in.nextInt();
+            String firstRow = in.next();
             grid = new int[size][size];
             List<int[]> emptyCells = new ArrayList<>();
             int totalPieces = 0;
             
             for (int y = 0; y < size; y++) {
-                String row = in.next();
+                String row = (y == 0) ? firstRow : in.next();
                 for (int x = 0; x < size; x++) {
                     char c = row.charAt(x);
                     if (c == '.') {

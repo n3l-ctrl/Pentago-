@@ -92,15 +92,15 @@
         <div class="blk">
             <div class="title">Initialization Input</div>
             <div class="text">
-                <p><span class="statement-lineno">Line 1: </span><var>playerCount</var>, the number of players in the game.</p>
+                <p><span class="statement-lineno">Line 1: </span><var>playerCount</var>, the number of players in the game (<const>3</const> or <const>4</const>).</p>
                 <p><span class="statement-lineno">Line 2: </span><var>myId</var>, your player ID (<const>0</const> to <const>3</const>).</p>
+                <p><span class="statement-lineno">Line 3: </span><var>size</var>, the size of the board (<const>9</const>).</p>
             </div>
         </div>
         <div class="blk">
             <div class="title">Input for one game turn</div>
             <div class="text">
-                <p><span class="statement-lineno">Line 1: </span><var>size</var>, the size of the board (<const>9</const>).</p>
-                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>
+                <p><span class="statement-lineno"><var>size</var> lines: </span>strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>
             </div>
         </div>
         <div class="blk">
@@ -114,12 +114,12 @@
                 <br>
                 <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)
                 <br><br>
-                <span class="statement-lineno">Option B (Swap): A single line containing 5 space-separated values: </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
+                <span class="statement-lineno">Option B (Swap): A single line containing 4 space-separated values: </span> <var>x</var> <var>y</var> <var>b1</var> <var>b2</var>
                 <br>
                 <var>x</var>, <var>y</var>: Coordinates to place your marble.<br>
                 <var>b1</var> and <var>b2</var>: The IDs of the two adjacent blocks you wish to swap.
                 <br>
-                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)
+                <strong>Example:</strong> <code>2 1 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)
             </div>
         </div>
         <div class="blk">

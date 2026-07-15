@@ -17,7 +17,7 @@ def play_with_opening(exes, size, swaps, seed):
     """exes: list of executable paths, index = player id."""
     rng = random.Random(seed)
     P = len(exes)
-    bots = [H.CppBot(p, P, i) for i, p in enumerate(exes)]
+    bots = [H.CppBot(p, P, i, size) for i, p in enumerate(exes)]
     board = H.Board(size)
 
     # --- opening: one full round of harness-chosen random moves ------------

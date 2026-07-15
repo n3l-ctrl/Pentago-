@@ -101,7 +101,7 @@ static void initTables(int size, bool swapsAllowed) {
                         t.perm[c1] = (uint8_t)c2;
                         t.perm[c2] = (uint8_t)c1;
                     }
-                t.suffix = "SWAP " + to_string(b1) + " " + to_string(b2);
+                t.suffix = to_string(b1) + " " + to_string(b2);
                 TR.push_back(t);
             }
     }
@@ -435,8 +435,10 @@ int main() {
     if (!(cin >> myId)) return 0;
     int maxIdSeen = 0;
     int size;
+    if (!(cin >> size)) return 0;
 
-    while (cin >> size) {
+    string firstRow;
+    while (cin >> firstRow) {
         auto t0 = chrono::steady_clock::now();
         auto elapsedMs = [&]() {
             return (long long)chrono::duration_cast<chrono::milliseconds>(
@@ -448,7 +450,8 @@ int main() {
         u128 bb[4] = {0, 0, 0, 0}, occ = 0;
         int totalPieces = 0;
         for (int y = 0; y < S; y++) {
-            string row; cin >> row;
+            string row = (y == 0) ? firstRow : "";
+            if (y > 0) cin >> row;
             for (int x = 0; x < S; x++) {
                 char ch = row[x];
                 if (ch == '.') continue;

@@ -4,18 +4,19 @@ import random
 try:
     playerCount = int(input())
     myId = int(input())
+    size = int(input())
 except EOFError:
     sys.exit(0)
 
 while True:
     try:
-        size = int(input())
+        firstRow = input()
     except EOFError:
         break
     numPlayers = 2
     empty_cells = []
     for y in range(size):
-        row = input()
+        row = firstRow if y == 0 else input()
         for x in range(size):
             if row[x] == '.':
                 empty_cells.append((x, y))

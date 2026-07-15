@@ -63,6 +63,7 @@ public class Referee extends AbstractReferee {
             for (Player p : gameManager.getPlayers()) {
                 p.sendInputLine(String.valueOf(gameManager.getPlayerCount()));
                 p.sendInputLine(String.valueOf(p.getIndex()));
+                p.sendInputLine(String.valueOf(boardSize));
             }
             
             drawBoard();
@@ -223,7 +224,6 @@ public class Referee extends AbstractReferee {
 
         // Send inputs
         int size = board.getSize();
-        player.sendInputLine(String.valueOf(size));
         int[][] grid = board.getGrid();
         for (int y = 0; y < size; y++) {
             StringBuilder sb = new StringBuilder();
@@ -245,7 +245,7 @@ public class Referee extends AbstractReferee {
             Pattern p = Pattern.compile("^(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+([LR])$");
             Matcher m = p.matcher(output);
             
-            Pattern pSwap = Pattern.compile("^(\\d+)\\s+(\\d+)\\s+SWAP\\s+(\\d+)\\s+(\\d+)$");
+            Pattern pSwap = Pattern.compile("^(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+(\\d+)$");
             Matcher mSwap = pSwap.matcher(output);
 
             boolean isNormal = m.matches();
@@ -291,7 +291,7 @@ public class Referee extends AbstractReferee {
                             deactivatePlayer(player, String.format("Invalid swap blocks %d and %d", b1, b2));
                         } else {
                             gameManager.addToGameSummary(player.getNicknameToken() + " played " + output);
-                            playerActionTexts[player.getIndex()].setText(String.format("%d %d SWAP %d %d", x, y, b1, b2));
+                            playerActionTexts[player.getIndex()].setText(String.format("%d %d %d %d", x, y, b1, b2));
                             animateSwap(b1, b2);
                             if (checkWinCondition()) return;
                         }

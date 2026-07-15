@@ -124,22 +124,21 @@ class BaselineBot:
 
 
 class CppBot:
-    def __init__(self, path, n_players, pid):
+    def __init__(self, path, n_players, pid, size):
         self.p = subprocess.Popen([path], stdin=subprocess.PIPE,
                                   stdout=subprocess.PIPE, text=True, bufsize=1)
         self.max_ms = 0.0
-        self.p.stdin.write(f"{n_players}\n{pid}\n")
+        self.p.stdin.write(f"{n_players}\n{pid}\n{size}\n")
         self.p.stdin.flush()
 
     def move(self, board, swaps):
-        s = board.size
-        inp = str(s) + "\n" + "\n".join(board.rows()) + "\n"
+        inp = "\n".join(board.rows()) + "\n"
         t0 = time.perf_counter()
         self.p.stdin.write(inp); self.p.stdin.flush()
         line = self.p.stdout.readline().strip()
         ms = (time.perf_counter() - t0) * 1000
         self.max_ms = max(self.max_ms, ms)
-        m = re.match(r"^(\d+) (\d+) SWAP (\d+) (\d+)$", line)
+        m = re.match(r"^(\d+) (\d+) (\d+) (\d+)$", line)
         if m:
             return (int(m[1]), int(m[2]), "SWAP", int(m[3]), int(m[4]))
         m = re.match(r"^(\d+) (\d+) (\d+) ([LR])$", line)

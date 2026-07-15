@@ -7,12 +7,22 @@ class Boss2 {
     static int[][] grid;
     
     static class Move {
-        int x, y, block;
+        int x, y, block, b2;
         String dir;
+        boolean isSwap;
+        
         Move(int x, int y, int block, String dir) {
-            this.x = x; this.y = y; this.block = block; this.dir = dir;
+            this.x = x; this.y = y; this.block = block; this.dir = dir; this.isSwap = false;
         }
+        
+        Move(int x, int y, int b1, int b2, boolean isSwap) {
+            this.x = x; this.y = y; this.block = b1; this.b2 = b2; this.isSwap = true;
+        }
+        
         public String toString() {
+            if (isSwap) {
+                return x + " " + y + " " + block + " " + b2;
+            }
             return x + " " + y + " " + block + " " + dir;
         }
     }
@@ -22,14 +32,15 @@ class Boss2 {
         if (!in.hasNextInt()) return;
         int numPlayers = in.nextInt();
         int myId = in.nextInt();
+        size = in.nextInt();
         while (in.hasNext()) {
-            size = in.nextInt();
+            String firstRow = in.next();
             grid = new int[size][size];
             List<int[]> emptyCells = new ArrayList<>();
             int totalPieces = 0;
             
             for (int y = 0; y < size; y++) {
-                String row = in.next();
+                String row = (y == 0) ? firstRow : in.next();
                 for (int x = 0; x < size; x++) {
                     char c = row.charAt(x);
                     if (c == '.') {

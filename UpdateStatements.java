@@ -76,12 +76,23 @@ public class UpdateStatements {
 "        </div>\n" +
 "    </div>\n";
 
-        String initInputEn = 
+        String initInputEnL1 = 
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Initialization Input</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Line 1: </span><var>playerCount</var>, the number of players in the game.</p>\n" +
+"                <p><span class=\"statement-lineno\">Line 1: </span><var>playerCount</var>, the number of players in the game (<const>2</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Line 2: </span><var>myId</var>, your player ID (<const>0</const> or <const>1</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Line 3: </span><var>size</var>, the size of the board (<const>6</const>).</p>\n" +
+"            </div>\n" +
+"        </div>\n";
+
+        String initInputEnL234 = 
+"        <div class=\"blk\">\n" +
+"            <div class=\"title\">Initialization Input</div>\n" +
+"            <div class=\"text\">\n" +
+"                <p><span class=\"statement-lineno\">Line 1: </span><var>playerCount</var>, the number of players in the game (<const>3</const> or <const>4</const>).</p>\n" +
 "                <p><span class=\"statement-lineno\">Line 2: </span><var>myId</var>, your player ID (<const>0</const> to <const>3</const>).</p>\n" +
+"                <p><span class=\"statement-lineno\">Line 3: </span><var>size</var>, the size of the board (<const>9</const>).</p>\n" +
 "            </div>\n" +
 "        </div>\n";
 
@@ -121,12 +132,11 @@ vicDefEn + expertRules +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Game Input/Output</span>\n" +
 "        </h2>\n" +
-initInputEn +
+initInputEnL1 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Input for one game turn</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Line 1: </span><var>size</var>, the size of the board (<const>6</const>).</p>\n" +
-"                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>1</const> represents a player's marble.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lines: </span>strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>1</const> represents a player's marble.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -187,12 +197,11 @@ vicDefEn + expertRules +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Game Input/Output</span>\n" +
 "        </h2>\n" +
-initInputEn +
+initInputEnL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Input for one game turn</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Line 1: </span><var>size</var>, the size of the board (<const>9</const>).</p>\n" +
-"                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lines: </span>strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -225,7 +234,7 @@ constraintsEn +
 
         String baseL3 = 
 topAlertPart1 +
-"            <b>Wood 2 League:</b> The ultimate mechanic has been unlocked: <action>SWAP</action>. You can now exchange the positions of two blocks instead of rotating them!\n" +
+"            <b>Wood 2 League:</b> The ultimate mechanic has been unlocked: SWAP. You can now exchange the positions of two blocks instead of rotating them!\n" +
 topAlertPart2 + goalEn +
 "    <div class=\"statement-section statement-rules\">\n" +
 "        <h2>\n" +
@@ -254,12 +263,11 @@ vicDefEn + expertRules +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Game Input/Output</span>\n" +
 "        </h2>\n" +
-initInputEn +
+initInputEnL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Input for one game turn</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Line 1: </span><var>size</var>, the size of the board (<const>9</const>).</p>\n" +
-"                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lines: </span>strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -273,12 +281,12 @@ initInputEn +
 "                <br>\n" +
 "                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "                <br><br>\n" +
-"                <span class=\"statement-lineno\">Option B (Swap): A single line containing 5 space-separated values: </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
+"                <span class=\"statement-lineno\">Option B (Swap): A single line containing 4 space-separated values: </span> <var>x</var> <var>y</var> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>x</var>, <var>y</var>: Coordinates to place your marble.<br>\n" +
 "                <var>b1</var> and <var>b2</var>: The IDs of the two adjacent blocks you wish to swap.\n" +
 "                <br>\n" +
-"                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
+"                <strong>Example:</strong> <code>2 1 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 constraintsEn +
@@ -316,12 +324,11 @@ vicDefEn + expertRules +
 "            <span class=\"icon icon-protocol\">&nbsp;</span>\n" +
 "            <span>Game Input/Output</span>\n" +
 "        </h2>\n" +
-initInputEn +
+initInputEnL234 +
 "        <div class=\"blk\">\n" +
 "            <div class=\"title\">Input for one game turn</div>\n" +
 "            <div class=\"text\">\n" +
-"                <p><span class=\"statement-lineno\">Line 1: </span><var>size</var>, the size of the board (<const>9</const>).</p>\n" +
-"                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
+"                <p><span class=\"statement-lineno\"><var>size</var> lines: </span>strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>\n" +
 "            </div>\n" +
 "        </div>\n" +
 "        <div class=\"blk\">\n" +
@@ -335,12 +342,12 @@ initInputEn +
 "                <br>\n" +
 "                <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)\n" +
 "                <br><br>\n" +
-"                <span class=\"statement-lineno\">Option B (Swap): A single line containing 5 space-separated values: </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>\n" +
+"                <span class=\"statement-lineno\">Option B (Swap): A single line containing 4 space-separated values: </span> <var>x</var> <var>y</var> <var>b1</var> <var>b2</var>\n" +
 "                <br>\n" +
 "                <var>x</var>, <var>y</var>: Coordinates to place your marble.<br>\n" +
 "                <var>b1</var> and <var>b2</var>: The IDs of the two adjacent blocks you wish to swap.\n" +
 "                <br>\n" +
-"                <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
+"                <strong>Example:</strong> <code>2 1 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)\n" +
 "            </div>\n" +
 "        </div>\n" +
 constraintsEn +

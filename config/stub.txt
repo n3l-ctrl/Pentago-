@@ -1,11 +1,15 @@
+read playerCount:int
+read myId:int
 gameloop
 read size:int
 loop size read row:word(10)
 write action
 
 INPUT
+playerCount: the number of players in the game (2 to 4).
+myId: your player ID (0 to playerCount - 1).
 size: The size of the board (6 or 9)
-row: A string representing a row of the board. '.' is empty, '0' is player 0, '1' is player 1.
+row: A string representing a row of the board. '.' is empty, '0' to '3' indicates a marble placed by the player with that ID.
 
 OUTPUT
-action: X Y BLOCK DIR (e.g. 4 3 2 R) or X Y SWAP B1 B2 (Silver league only)
+action: X Y BLOCK DIR (e.g. 4 3 2 R) or X Y SWAP B1 B2 (From Silver league only)

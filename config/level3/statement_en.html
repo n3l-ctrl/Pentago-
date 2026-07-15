@@ -11,7 +11,7 @@
         <div class="statement-league-alert-content">
             For this challenge, multiple leagues for the same game are available. Once you have proven your worth against the Boss, you will access the higher league.<br>
             <br>
-            <b>Silver League:</b> The ultimate mechanic has been unlocked: <action>SWAP</action>. You can now exchange the physical positions of two blocks instead of rotating them!
+            <b>Silver League:</b> The ultimate mechanic has been unlocked: <action>SWAP</action>. You can now exchange the positions of two blocks instead of rotating them!
         </div>
     </div>
 
@@ -23,7 +23,7 @@
         <div class="statement-goal-content">
             <p>
                 Be the first player to form a line of 5 of your marbles either horizontally, vertically, or diagonally.<br>
-                This puzzle is based on the official board game <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
+                This puzzle is based on the board game <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
             </p>
         </div>
     </div>
@@ -39,9 +39,9 @@
                 <li><strong>Place a marble</strong> on any empty space on the board.</li>
                 <li><strong>Manipulate the board</strong> using ONE of the following methods:</li>
                 <ul>
-                    <li><strong>Rotate</strong> a 3x3 block 90 degrees either left or right.</li>
+                    <li><strong>Rotate</strong> a 3x3 block 90 degrees either left (counter-clockwise) or right (clockwise).</li>
                     <div style="color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 2px;">
-                        <li><strong>Swap</strong> the physical positions of two adjacent 3x3 blocks (blocks sharing an edge).</li>
+                        <li><strong>Swap</strong> the positions of two adjacent 3x3 blocks (blocks sharing an edge).</li>
                     </div>
                 </ul>
             </ol>
@@ -92,26 +92,43 @@
             <span>Game Input/Output</span>
         </h2>
         <div class="blk">
+            <div class="title">Initialization Input</div>
+            <div class="text">
+                <p><span class="statement-lineno">Line 1: </span><var>playerCount</var>, the number of players in the game.</p>
+                <p><span class="statement-lineno">Line 2: </span><var>myId</var>, your player ID (<const>0</const> to <const>3</const>).</p>
+            </div>
+        </div>
+        <div class="blk">
             <div class="title">Input for one game turn</div>
             <div class="text">
                 <p><span class="statement-lineno">Line 1: </span><var>size</var>, the size of the board (<const>9</const>).</p>
-                <p>Next <var>size</var> lines: strings representing the board state. A <code>.</code> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>
+                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>3</const> represents a player's marble.</p>
             </div>
         </div>
         <div class="blk">
             <div class="title">Output for one game turn</div>
             <div class="text">
-                <span class="statement-lineno">Option A (Rotate): </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
+                <span class="statement-lineno">Option A (Rotate): A single line containing 4 space-separated values: </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
                 <br>
-                <var>dir</var> is <action>L</action> or <action>R</action>.
+                <var>x</var>, <var>y</var>: Coordinates to place your marble.<br>
+                <var>block</var>: The ID of the block you wish to rotate (<const>0</const> to <const>8</const>).<br>
+                <var>dir</var>: The direction to rotate (<action>L</action> or <action>R</action>).
                 <br>
                 <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)
                 <br><br>
-                <span class="statement-lineno">Option B (Swap): </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
+                <span class="statement-lineno">Option B (Swap): A single line containing 5 space-separated values: </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
                 <br>
-                <var>b1</var> and <var>b2</var> are the IDs of the two adjacent blocks you wish to swap.
+                <var>x</var>, <var>y</var>: Coordinates to place your marble.<br>
+                <var>b1</var> and <var>b2</var>: The IDs of the two adjacent blocks you wish to swap.
                 <br>
                 <strong>Example:</strong> <code>2 1 SWAP 0 1</code> (Places marble at 2,1 and swaps blocks 0 and 1)
+            </div>
+        </div>
+        <div class="blk">
+            <div class="title">Constraints</div>
+            <div class="text">
+                Response time for first turn ≤ <const>1000</const> ms<br>
+                Response time for one turn ≤ <const>50</const> ms<br>
             </div>
         </div>
     </div>

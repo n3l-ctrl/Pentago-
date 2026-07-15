@@ -11,7 +11,7 @@
         <div class="statement-league-alert-content">
             Pour ce challenge, plusieurs ligues pour le même jeu sont disponibles. Une fois que vous aurez prouvé votre valeur contre le Boss, vous accéderez à la ligue supérieure.<br>
             <br>
-            <b>Ligue Or :</b> Les règles restent identiques, mais vos adversaires (et le Boss) seront bien plus forts. Bonne chance !
+            <b>Ligue Or :</b> Les règles restent identiques, mais vos adversaires (et le Boss) seront beaucoup plus forts. Bonne chance !
         </div>
     </div>
 
@@ -22,8 +22,8 @@
         </h2>
         <div class="statement-goal-content">
             <p>
-                Soyez le premier joueur à former un alignement de 5 billes horizontalement, verticalement ou diagonalement.<br>
-                Ce puzzle est basé sur le jeu de plateau officiel <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
+                Soyez le premier joueur à former une ligne de 5 de vos billes horizontalement, verticalement ou diagonalement.<br>
+                Ce puzzle est basé sur le jeu de plateau <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
             </p>
         </div>
     </div>
@@ -34,18 +34,18 @@
             <span>Règles</span>
         </h2>
         <div class="statement-rules-content">
-            <p>À votre tour, vous devez effectuer exactement deux actions :</p>
+            <p>A votre tour, vous devez effectuer exactement deux actions :</p>
             <ol>
-                <li><strong>Placer une bille</strong> sur un emplacement vide du plateau.</li>
+                <li><strong>Placer une bille</strong> sur n'importe quelle case vide du plateau.</li>
                 <li><strong>Manipuler le plateau</strong> en utilisant UNE des méthodes suivantes :</li>
                 <ul>
                     <li><strong>Pivoter</strong> un bloc 3x3 de 90 degrés vers la gauche ou la droite.</li>
-                    <li><strong>Échanger (Swap)</strong> les positions physiques de deux blocs 3x3 adjacents (partageant un bord).</li>
+                    <li><strong>Échanger (Swap)</strong> les positions de deux blocs 3x3 adjacents (blocs partageant un bord).</li>
                 </ul>
             </ol>
-            <p>Les blocs sont numérotés de <const>0</const> à <const>8</const>, et les coordonnées <var>x</var>, <var>y</var> vont de <const>0</const> à <const>8</const> comme illustré ci-dessous :</p>
+            <p>Les blocs sont numérotés de <const>0</const> à <const>8</const>, et les coordonnées <var>x</var>, <var>y</var> de <const>0</const> à <const>8</const> comme illustré ci-dessous :</p>
             <img src="https://raw.githubusercontent.com/n3l-ctrl/Pentago-/main/config/level3/coords_9x9.png" style="width: 100%; max-width: 500px; display: block; margin: 10px auto;" />
-            <p><strong>Égalités :</strong> Si plusieurs joueurs forment une ligne de 5 simultanément, c'est un match nul entre ces joueurs. Si le plateau est totalement rempli sans aucun alignement de 5, la partie se termine par une égalité globale.</p>
+            <p><strong>Égalités :</strong> Si plusieurs joueurs forment une ligne de 5 simultanément, c'est un match nul entre ces joueurs. Si le plateau est totalement rempli sans aucune ligne de 5, la partie se termine par une égalité globale pour tous les joueurs actifs.</p>
       <br />
       <div class="statement-victory-conditions">
         <div class="icon victory"></div>
@@ -53,7 +53,7 @@
           <div class="title">Conditions de Victoire</div>
           <div class="text">
           <ul style="padding-bottom: 0;">
-            <li>Former un alignement de 5 billes de votre couleur horizontalement, verticalement ou diagonalement.</li>
+            <li>Former une ligne de 5 billes de votre couleur horizontalement, verticalement ou diagonalement.</li>
           </ul>
           </div>
         </div>
@@ -90,26 +90,43 @@
             <span>Entrées/Sorties du jeu</span>
         </h2>
         <div class="blk">
+            <div class="title">Entrées d'initialisation</div>
+            <div class="text">
+                <p><span class="statement-lineno">Ligne 1: </span><var>playerCount</var>, le nombre de joueurs dans la partie.</p>
+                <p><span class="statement-lineno">Ligne 2: </span><var>myId</var>, votre ID de joueur (<const>0</const> à <const>3</const>).</p>
+            </div>
+        </div>
+        <div class="blk">
             <div class="title">Entrées pour un tour de jeu</div>
             <div class="text">
-                <p><span class="statement-lineno">Ligne 1 : </span><var>size</var>, la taille du plateau (<const>9</const>).</p>
-                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant l'état du plateau. Un <code>.</code> signifie vide. Un chiffre <const>0</const>-<const>3</const> représente la bille d'un joueur.</p>
+                <p><span class="statement-lineno">Ligne 1: </span><var>size</var>, la taille du plateau (<const>9</const>).</p>
+                <p>Les <var>size</var> lignes suivantes : chaînes de caractères représentant le plateau. Un <const>.</const> signifie vide. Un chiffre de <const>0</const> à <const>3</const> représente la bille d'un joueur.</p>
             </div>
         </div>
         <div class="blk">
             <div class="title">Sorties pour un tour de jeu</div>
             <div class="text">
-                <span class="statement-lineno">Option A (Rotation) : </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
+                <span class="statement-lineno">Option A (Rotation) : Une seule ligne contenant 4 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <var>block</var> <var>dir</var>
                 <br>
-                <var>dir</var> est <action>L</action> ou <action>R</action>.
+                <var>x</var>, <var>y</var> : Coordonnées où placer votre bille.<br>
+                <var>block</var> : L'ID du bloc que vous souhaitez pivoter (<const>0</const> à <const>8</const>).<br>
+                <var>dir</var> : La direction de la rotation (<action>L</action> ou <action>R</action>).
                 <br>
                 <strong>Exemple :</strong> <code>2 1 0 R</code> (Place une bille en 2,1 et pivote le bloc 0 vers la droite)
                 <br><br>
-                <span class="statement-lineno">Option B (Échange) : </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
+                <span class="statement-lineno">Option B (Échange) : Une seule ligne contenant 5 valeurs séparées par des espaces : </span> <var>x</var> <var>y</var> <action>SWAP</action> <var>b1</var> <var>b2</var>
                 <br>
-                <var>b1</var> et <var>b2</var> sont les ID des deux blocs adjacents à échanger.
+                <var>x</var>, <var>y</var> : Coordonnées où placer votre bille.<br>
+                <var>b1</var> et <var>b2</var> : Les ID des deux blocs adjacents que vous souhaitez échanger.
                 <br>
                 <strong>Exemple :</strong> <code>2 1 SWAP 0 1</code> (Place une bille en 2,1 et échange les blocs 0 et 1)
+            </div>
+        </div>
+        <div class="blk">
+            <div class="title">Contraintes</div>
+            <div class="text">
+                Temps de réponse pour le premier tour ≤ <const>1000</const> ms<br>
+                Temps de réponse pour un tour ≤ <const>50</const> ms<br>
             </div>
         </div>
     </div>

@@ -12,11 +12,13 @@ import com.codingame.gameengine.module.entities.Group;
 import com.codingame.gameengine.module.entities.Rectangle;
 import com.codingame.gameengine.module.entities.Sprite;
 import com.codingame.gameengine.module.entities.Text;
+import com.codingame.gameengine.module.tooltip.TooltipModule;
 import com.google.inject.Inject;
 
 public class Referee extends AbstractReferee {
     @Inject private MultiplayerGameManager<Player> gameManager;
     @Inject private GraphicEntityModule graphicEntityModule;
+    @Inject private TooltipModule tooltipModule;
 
     private Board board;
     private int currentPlayerIndex = 0;
@@ -57,6 +59,11 @@ public class Referee extends AbstractReferee {
             gameManager.setMaxTurns(200);
             gameManager.setTurnMaxTime(50);
             gameManager.setFirstTurnMaxTime(1000);
+            
+            for (Player p : gameManager.getPlayers()) {
+                p.sendInputLine(String.valueOf(gameManager.getPlayerCount()));
+                p.sendInputLine(String.valueOf(p.getIndex()));
+            }
             
             drawBoard();
         } catch (Throwable t) {
@@ -117,6 +124,10 @@ public class Referee extends AbstractReferee {
                             .setAlpha(0)
                             .setZIndex(0);
                             
+                    int realX = bx * 3 + j;
+                    int realY = by * 3 + i;
+                    tooltipModule.setTooltipText(marbleSprite, "x: " + realX + "\ny: " + realY);
+                            
                     marbles[b][i * 3 + j] = marbleSprite;
                     group.add(marbleSprite);
                 }
@@ -168,7 +179,7 @@ public class Referee extends AbstractReferee {
                     .setX(x)
                     .setY(y + 80)
                     .setAnchorX(0.5)
-                    .setFontSize(30)
+                    .setFontSize(45)
                     .setFillColor(0xffffff);
         }
     }
@@ -211,9 +222,6 @@ public class Referee extends AbstractReferee {
 
         try {
             List<String> outputs = player.getOutputs();
-            if (outputs.isEmpty()) {
-                throw new Exception("No output provided");
-            }
             String output = outputs.get(0).trim();
 
             Pattern p = Pattern.compile("^(\\d+)\\s+(\\d+)\\s+(\\d+)\\s+([LR])$");
@@ -265,7 +273,7 @@ public class Referee extends AbstractReferee {
                             deactivatePlayer(player, String.format("Invalid swap blocks %d and %d", b1, b2));
                         } else {
                             gameManager.addToGameSummary(player.getNicknameToken() + " played " + output);
-                            playerActionTexts[player.getIndex()].setText(String.format("Played %d %d SWAP %d %d", x, y, b1, b2));
+                            playerActionTexts[player.getIndex()].setText(String.format("%d %d SWAP %d %d", x, y, b1, b2));
                             animateSwap(b1, b2);
                             if (checkWinCondition()) return;
                         }
@@ -277,7 +285,7 @@ public class Referee extends AbstractReferee {
                             deactivatePlayer(player, String.format("Invalid rotation block %d dir %s", block, dir));
                         } else {
                             gameManager.addToGameSummary(player.getNicknameToken() + " played " + output);
-                            playerActionTexts[player.getIndex()].setText(String.format("Played %d %d %d %s", x, y, block, dir));
+                            playerActionTexts[player.getIndex()].setText(String.format("%d %d %d %s", x, y, block, dir));
                             animateRotation(block, dir);
                             if (checkWinCondition()) return;
                         }

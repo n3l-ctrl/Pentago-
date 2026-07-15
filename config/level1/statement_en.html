@@ -23,7 +23,7 @@
         <div class="statement-goal-content">
             <p>
                 Be the first player to form a line of 5 of your marbles either horizontally, vertically, or diagonally.<br>
-                This puzzle is based on the official board game <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
+                This puzzle is based on the board game <a href="https://en.wikipedia.org/wiki/Pentago" target="_blank">Pentago</a>.
             </p>
         </div>
     </div>
@@ -86,10 +86,17 @@
             <span>Game Input/Output</span>
         </h2>
         <div class="blk">
+            <div class="title">Initialization Input</div>
+            <div class="text">
+                <p><span class="statement-lineno">Line 1: </span><var>playerCount</var>, the number of players in the game.</p>
+                <p><span class="statement-lineno">Line 2: </span><var>myId</var>, your player ID (<const>0</const> to <const>3</const>).</p>
+            </div>
+        </div>
+        <div class="blk">
             <div class="title">Input for one game turn</div>
             <div class="text">
                 <p><span class="statement-lineno">Line 1: </span><var>size</var>, the size of the board (<const>6</const>).</p>
-                <p>Next <var>size</var> lines: strings representing the board state. A <code>.</code> means empty. A number <const>0</const>-<const>1</const> represents a player's marble.</p>
+                <p>Next <var>size</var> lines: strings representing the board state. A <const>.</const> means empty. A number <const>0</const>-<const>1</const> represents a player's marble.</p>
             </div>
         </div>
         <div class="blk">
@@ -107,6 +114,13 @@
                 <strong>Example:</strong> <code>2 1 0 R</code> (Places marble at 2,1 and rotates block 0 right)
             </div>
         </div>
+        <div class="blk">
+            <div class="title">Constraints</div>
+            <div class="text">
+                Response time for first turn ≤ <const>1000</const> ms<br>
+                Response time for one turn ≤ <const>50</const> ms<br>
+            </div>
+        </div>
     </div>
     <div style="color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 20px; margin-top: 10px; text-align: left;">
         <div style="text-align: center; margin-bottom: 6px"><img src="//cdn.codingame.com/smash-the-code/statement/league_wood_04.png" /></div>
@@ -115,7 +129,7 @@
         </div>
         <ul>
             <li>Play on a massive 9x9 board with up to 3 opponents simultaneously.</li>
-            <li>Unlock the SWAP mechanic to exchange the physical positions of two 3x3 blocks.</li>
+            <li>Unlock the SWAP mechanic to exchange the positions of two 3x3 blocks.</li>
         </ul>
     </div>
 </div>

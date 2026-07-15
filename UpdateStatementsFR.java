@@ -235,9 +235,7 @@ topAlertPart2 + goalFr +
 "                <li><strong>Manipuler le plateau</strong> en utilisant UNE des méthodes suivantes :</li>\n" +
 "                <ul>\n" +
 "                    <li><strong>Pivoter</strong> un bloc 3x3 de 90 degrés vers la gauche ou la droite.</li>\n" +
-"                    <div style=\"color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 2px;\">\n" +
-"                        <li><strong>Échanger (Swap)</strong> les positions de deux blocs 3x3 adjacents (blocs partageant un bord).</li>\n" +
-"                    </div>\n" +
+"                    <li style=\"color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 2px;\"><strong>Échanger (Swap)</strong> les positions de deux blocs 3x3 adjacents (blocs partageant un bord).</li>\n" +
 "                </ul>\n" +
 "            </ol>\n" +
 "            <p>Les blocs sont numérotés de <const>0</const> à <const>8</const>, et les coordonnées <var>x</var>, <var>y</var> de <const>0</const> à <const>8</const> comme illustré ci-dessous :</p>\n" +

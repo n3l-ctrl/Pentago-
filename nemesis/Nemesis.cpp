@@ -429,7 +429,10 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int myId = -1;
+    int playerCount;
+    if (!(cin >> playerCount)) return 0;
+    int myId;
+    if (!(cin >> myId)) return 0;
     int maxIdSeen = 0;
     int size;
 

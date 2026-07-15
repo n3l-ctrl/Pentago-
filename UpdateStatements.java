@@ -239,9 +239,7 @@ topAlertPart2 + goalEn +
 "                <li><strong>Manipulate the board</strong> using ONE of the following methods:</li>\n" +
 "                <ul>\n" +
 "                    <li><strong>Rotate</strong> a 3x3 block 90 degrees either left (counter-clockwise) or right (clockwise).</li>\n" +
-"                    <div style=\"color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 2px;\">\n" +
-"                        <li><strong>Swap</strong> the positions of two adjacent 3x3 blocks (blocks sharing an edge).</li>\n" +
-"                    </div>\n" +
+"                    <li style=\"color: #7cc576; background-color: rgba(124, 197, 118,.1); padding: 2px;\"><strong>Swap</strong> the positions of two adjacent 3x3 blocks (blocks sharing an edge).</li>\n" +
 "                </ul>\n" +
 "            </ol>\n" +
 "            <p>Blocks are numbered <const>0</const> to <const>8</const>, and coordinates <var>x</var>, <var>y</var> from <const>0</const> to <const>8</const> as shown below:</p>\n" +

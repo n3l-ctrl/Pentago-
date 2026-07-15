@@ -124,10 +124,12 @@ class BaselineBot:
 
 
 class CppBot:
-    def __init__(self, path):
+    def __init__(self, path, n_players, pid):
         self.p = subprocess.Popen([path], stdin=subprocess.PIPE,
                                   stdout=subprocess.PIPE, text=True, bufsize=1)
         self.max_ms = 0.0
+        self.p.stdin.write(f"{n_players}\n{pid}\n")
+        self.p.stdin.flush()
 
     def move(self, board, swaps):
         s = board.size
@@ -194,7 +196,7 @@ def main():
     for game in range(n_games):
         seat = game % n_players           # rotate boss seat
         if cpp: gmax = max(gmax, cpp.max_ms); cpp.close()
-        cpp = CppBot(exe)                 # fresh process per game (id caching!)
+        cpp = CppBot(exe, n_players, seat)                 # fresh process per game (id caching!)
         bots = []
         for i in range(n_players):
             if i == seat:
